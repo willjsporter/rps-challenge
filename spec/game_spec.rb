@@ -2,58 +2,26 @@ require 'game'
 
 describe Game do
 
-  context "prevents" do
+  context "stores players" do
 
-    it "instance of game being initialized without proper input" do
-      expect { described_class.new("asdf") }.to raise_error "Must enter a valid move"
+    it "initializes with 2 players (one may be computer)" do
+      expect { described_class.new }.to raise_error(ArgumentError)
     end
-
+    
   end
+  # unneccessary as tested by below
+  # context "stores outcome of game in player" do
+  #
+  #   it "this_go adds a win to player's tally for the game" do
+  #
+  #   end
+  #
+  # end
 
-  context "outcome of game" do
+  context "if one player reaches the set number of wins needed to win then the game will finish" do
 
-    it 'returns tie, play again if both players match' do
-      expect(described_class.new('rock')).beats?('rock')
-    end
+    it "if game completed then a method to end the game (and go to an end page is created)" do
 
-    it "Rock beats lizard" do
-      expect(described_class.new('rock')).beats?('lizard').to eq true
-    end
-
-    it "Rock beats scissors" do
-      expect(described_class.new('rock')).beats?('scissors').to eq true
-    end
-
-    it "Scissors beats lizard" do
-      expect(described_class.new('scissors')).beats?('lizard').to eq true
-    end
-
-    it "Scissors beats paper" do
-      expect(described_class.new('scissors')).beats?("Paper").to eq true
-    end
-
-    it "Paper beats Spock" do
-      expect(described_class.new("Paper")).beats?("Spock").to eq true
-    end
-
-    it "Paper beats rock" do
-      expect(described_class.new("Paper")).beats?('rock').to eq true
-    end
-
-    it "Spock beats scissors" do
-      expect(described_class.new("Spock")).beats?('scissors').to eq true
-    end
-
-    it "Spock beats rock" do
-      expect(described_class.new("Spock")).beats?('rock').to eq true
-    end
-
-    it "Lizard beats Paper" do
-      expect(described_class.new("lizard")).beats?("Paper").to eq true
-    end
-
-    it "Lizard beats Spock" do
-      expect(described_class.new("lizard")).beats?("Spock").to eq true
     end
 
   end
